@@ -14,6 +14,7 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import FloatingEdge from "./components/FloatingEdge";
 import FloatingConnectionLine from "./components/FloatingConnectionLine";
+import Link from "next/link";
 
 const edgeTypes = {
   floating: FloatingEdge,
@@ -25,7 +26,7 @@ const NodeAsHandleFlow = () => {
   const { nodes: initialNodes, edges: initialEdges } = createNodesAndEdges([
     {
       id: 1,
-      label: "Hunt: Showdown",
+      label: "Water",
       x: 0,
       y: 0,
       source: "",
@@ -33,7 +34,7 @@ const NodeAsHandleFlow = () => {
     },
     {
       id: 2,
-      label: "Genre",
+      label: "Properties",
       x: -200,
       y: -100,
       source: "2",
@@ -41,7 +42,7 @@ const NodeAsHandleFlow = () => {
     },
     {
       id: 3,
-      label: "Setting",
+      label: "States",
       x: 200,
       y: -100,
       source: "3",
@@ -49,7 +50,7 @@ const NodeAsHandleFlow = () => {
     },
     {
       id: 4,
-      label: "Game Modes",
+      label: "Importance",
       x: -200,
       y: 100,
       source: "4",
@@ -57,51 +58,11 @@ const NodeAsHandleFlow = () => {
     },
     {
       id: 5,
-      label: "Gameplay Mechanics",
+      label: "Uses",
       x: 200,
       y: 100,
       source: "5",
       target: "1",
-    },
-    {
-      id: 6,
-      label: "First-person Shooter",
-      x: -350,
-      y: -220,
-      source: "6",
-      target: "2",
-    },
-    {
-      id: 7,
-      label: "Horror",
-      x: -350,
-      y: -60,
-      source: "7",
-      target: "2",
-    },
-    {
-      id: 8,
-      label: "19th Century",
-      x: 350,
-      y: -220,
-      source: "8",
-      target: "3",
-    },
-    {
-      id: 9,
-      label: "Bounty Hunting",
-      x: 350,
-      y: -60,
-      source: "9",
-      target: "3",
-    },
-    {
-      id: 10,
-      label: "PvPvE",
-      x: 350,
-      y: 100,
-      source: "10",
-      target: "4",
     },
   ]);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -110,14 +71,16 @@ const NodeAsHandleFlow = () => {
   const [jsonString, setJsonString] = useState("");
 
   const createMindmap = (json: string) => {
-    const jsonData = JSON.parse(json);
-    console.log(jsonData);
+    try {
+      const jsonData = JSON.parse(json);
+      console.log(jsonData);
+      const { nodes, edges } = createNodesAndEdges(jsonData);
+      setEdges(edges);
 
-    const { nodes, edges } = createNodesAndEdges(jsonData);
-
-    setEdges(edges);
-
-    setNodes(nodes);
+      setNodes(nodes);
+    } catch (err) {
+      alert("Enter a correct array");
+    }
   };
 
   const onConnect = useCallback(
@@ -158,7 +121,10 @@ const NodeAsHandleFlow = () => {
           </button>
         </div>
       </div>
-      <div className="h-full w-full">
+      <div className="fixed bottom-0 left-0 p-2 bg-gray-200 rounded-tr-lg z-10">
+        <Link href="/info">Get Chat GPT Layout</Link>
+      </div>
+      <div className="h-full w-full ">
         <ReactFlow
           defaultEdgeOptions={defaultEdgeOptions}
           nodes={nodes}
