@@ -102,6 +102,7 @@ const NodeAsHandleFlow = () => {
     <div className="w-screen h-screen">
       <div className="  flex flex-row sm:gap-4 fixed z-10 p-4 bg-white shadow-md w-full justify-between gap-2">
         <input
+          placeholder="Dont know what to enter? Check bottom left."
           value={jsonString}
           onChange={(e) => setJsonString(e.target.value)}
           className="border-[1px] py-2 border-gray-400 rounded-lg outline-none px-2 flex-grow"

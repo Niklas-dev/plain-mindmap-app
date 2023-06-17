@@ -57,13 +57,25 @@ export default function Page() {
     connection between the items. Use correct terms. The given object is
     just showing how is should be formated I will give you a topic next.`;
   return (
-    <div className="p-4 w-1/2 bg-gray-100 rounded-sm">
+    <div className=" px-12 pt-8 w-full h-screen bg-gray-100 rounded-sm flex flex-col gap-2">
       <h1 className="text-2xl font-bold">Info</h1>
-      <h3 className="text-lg">
-        You can copy is layout and paste it to chat gpt.
+      <h3 className="text-lg ">
+        You can copy this layout and paste it to chat gpt.
       </h3>
+
+      <div>
+        <h4 className="text-lg font-semibold">Worflow</h4>
+        <ul className="list-decimal pl-8">
+          <li>Copy layout</li>
+          <li>Paste into Chat gpt</li>
+          <li>Enter your topic</li>
+          <li>Copy the array from the code</li>
+        </ul>
+      </div>
       <div className="flex flex-col gap-2   rounded-md ">
-        <p className=" p-2">{text}</p>
+        <code className=" p-2 border-gray-300 bg-white rounded-md border-2 w-full md:w-2/3">
+          {text}
+        </code>
 
         <button
           onClick={() => {
@@ -74,7 +86,7 @@ export default function Page() {
               clearTimeout(out);
             }, 2000);
           }}
-          className=" bg-gray-300 py-2 px-2 sm:px-4 rounded-lg flex-grow-0 transition-transform hover:scale-95 w-fit min-w-[11rem]"
+          className=" bg-gray-300 mb-4 py-2 px-2 sm:px-4 rounded-lg flex-grow-0 transition-transform hover:scale-95 w-fit min-w-[11rem]"
         >
           {copied ? "Copied!" : "Copy to clipboard"}
         </button>
