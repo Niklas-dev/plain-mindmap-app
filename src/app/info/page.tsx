@@ -79,7 +79,7 @@ export default function Page() {
 
         <button
           onClick={() => {
-            navigator.clipboard.writeText("");
+            navigator.clipboard.writeText(text);
             setCopied(true);
             setTimeout((out: NodeJS.Timeout) => {
               setCopied(false);
