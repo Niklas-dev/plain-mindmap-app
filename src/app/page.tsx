@@ -105,7 +105,7 @@ const NodeAsHandleFlow = () => {
           placeholder="Dont know what to enter? Check bottom left."
           value={jsonString}
           onChange={(e) => setJsonString(e.target.value)}
-          className="border-[1px] py-2 border-gray-400 rounded-lg outline-none px-2 flex-grow"
+          className="border-[1px] py-2 border-gray-400 rounded-lg outline-none px-2 flex-grow max-w-[61%] sm:max-w-none"
         ></input>
         <div className="flex flex-row gap-2">
           <button
