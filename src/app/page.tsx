@@ -115,7 +115,11 @@ const NodeAsHandleFlow = () => {
             Submit
           </button>
           <button
-            onClick={() => setJsonString("")}
+            onClick={() => {
+              setJsonString("");
+              setNodes([]);
+              setEdges([]);
+            }}
             className=" bg-gray-200 py-2 px-2 sm:px-4 rounded-lg flex-grow-0 transition-transform hover:scale-95"
           >
             Clear
