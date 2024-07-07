@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState } from "react";
 import { clearTimeout } from "timers";
 
@@ -77,19 +78,24 @@ export default function Page() {
           {text}
         </code>
 
-        <button
-          onClick={() => {
-            navigator.clipboard.writeText(text);
-            setCopied(true);
-            setTimeout((out: NodeJS.Timeout) => {
-              setCopied(false);
-              clearTimeout(out);
-            }, 2000);
-          }}
-          className=" bg-gray-300 mb-4 py-2 px-2 sm:px-4 rounded-lg flex-grow-0 transition-transform hover:scale-95 w-fit min-w-[11rem]"
-        >
-          {copied ? "Copied!" : "Copy to clipboard"}
-        </button>
+        <div className="flex flex-row  items-center gap-4">
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(text);
+              setCopied(true);
+              setTimeout((out: NodeJS.Timeout) => {
+                setCopied(false);
+                clearTimeout(out);
+              }, 2000);
+            }}
+            className=" bg-gray-300  py-2 px-2 sm:px-4 rounded-lg flex-grow-0 transition-transform hover:scale-95 w-fit min-w-[11rem] font-semibold"
+          >
+            {copied ? "Copied!" : "Copy to clipboard"}
+          </button>
+          <Link className="text-gray-500" href={"/"}>
+            Go back to editor
+          </Link>
+        </div>
       </div>
     </div>
   );
